@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,17 +64,9 @@ public class DetailActivity extends AppCompatActivity {
     private void populateListControls(List<String> list, View view) {
 
         if (list != null && list.size() > 0){
-
-            String text = "";
-            for (String value : list) {
-                text += value + ", ";
-            }
-
-            if (text.length() > 0) {
-                text = text.substring(0, (text.length() - 2));
-            }
+            String text = TextUtils.join(", ", list);
+            text = text.substring(0, (text.length() - 2));
             ((TextView)view).setText(text);
-
         }
 
     }
